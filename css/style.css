@@ -1,0 +1,11 @@
+body {
+      padding: 0;
+      margin: 0;
+    }
+    .option {
+      display: inline-block;
+      height: 80px;
+      width: 20%;
+      margin: 0;
+      padding: 0;
+    }
