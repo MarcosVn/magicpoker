@@ -1,11 +1,66 @@
-body {
-      padding: 0;
-      margin: 0;
-    }
-    .option {
-      display: inline-block;
-      height: 80px;
-      width: 20%;
-      margin: 0;
-      padding: 0;
-    }
+li { list-style-type: none; }
+
+span { 
+  color: white; 
+  font-size: 25pt;
+}
+
+button {
+  width: 250px;
+  height: 70px;
+  font-size: 20pt;
+  z-index: 3;
+}
+
+footer {
+  position: absolute;
+  bottom: 2em;
+  
+}
+
+header {
+  margin-left: 23em;
+}
+
+
+
+
+#start {}
+#end {}
+#max {}
+
+#container {
+  overflow: auto;
+  height: auto; 
+  min-height: 100%; 
+}
+
+.background {
+  background-color: green;
+}
+
+.bet {
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 4.75em;
+  height: 4.75em;
+  background-color: rgba(0, 0, 255, 0.6);
+  font-style: Arial;
+  color: white;
+  z-index: 10;
+  box-shadow: 5px 5px 5px black;
+}
+
+.bet-index {
+  font-size: 90%;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  left: 0.5em;
+  top:  0.5em;
+  padding: 1.3em;
+}
+
+
+

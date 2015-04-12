@@ -1,3 +1,4 @@
+
 /* Classe carta, por default a primeira posição é a de baixo*/
 .card {
   background-image: url("../img/cardback.gif");
@@ -5,10 +6,12 @@
   border-width: 1px;
   border-style: solid;
   color: #000000;
-  font-size: 20pt;
+  font-size: 40pt;
   position: absolute;
   width:  3.75em;
   height: 5.00em;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px black;
 }
 
 .front {
