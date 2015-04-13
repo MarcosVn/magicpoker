@@ -1,36 +1,43 @@
 li { list-style-type: none; }
 
+p {
+  color: white; 
+  font-size: 20pt;
+  cursor: default;
+}
+
 span { 
   color: white; 
-  font-size: 25pt;
+  font-size: 20pt;
+  cursor: default;
 }
 
 button {
-  width: 250px;
-  height: 70px;
-  font-size: 20pt;
+  width: 100px;
+  height: 40px;
+  font-size: 10pt;
   z-index: 3;
 }
 
 footer {
+  width: 100%;
   position: absolute;
   bottom: 2em;
-  
 }
 
 header {
-  margin-left: 23em;
 }
 
-
-
+input[type=text] {
+  height: 3em;
+}
 
 #start {}
 #end {}
 #max {}
 
+
 #container {
-  overflow: auto;
   height: auto; 
   min-height: 100%; 
 }
@@ -39,7 +46,9 @@ header {
   background-color: green;
 }
 
-.bet {
+.chip {
+  /*background-image: url("../img/ficha.png");*/
+  background-repeat: no-repeat;
   cursor: pointer;
   font-weight: bold;
   border-radius: 50%;
@@ -52,10 +61,19 @@ header {
   box-shadow: 5px 5px 5px black;
 }
 
-.bet-index {
-  font-size: 90%;
+.circle {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  margin-left: 0.8em;
+  margin-top: 0.8em;
+  background-color: white;
+}
+
+.chip-index {
+  font-size: 60%;
+  color: black;
   font-weight: bold;
-  color: white;
   text-align: center;
   left: 0.5em;
   top:  0.5em;
