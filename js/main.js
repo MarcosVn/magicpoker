@@ -59,6 +59,7 @@ jQuery(document).ready(function () {
   var valueLabel = jQuery("span:contains('Valor da aposta:')");
   var value = jQuery("input[type=text]").hide();
   var submit = jQuery("input[type=submit]").hide();
+
  
   jQuery("button:contains('Entrar')").click(function (){
       jQuery('.card').draggable();
@@ -78,7 +79,8 @@ jQuery(document).ready(function () {
     raise.hide();
     call.hide();
     fold.hide();
-    jQuery('body').removeClass('background');
+    jQuery("span:contains('Aposta')").hide();  
+
   });
 
   call.click(function () {

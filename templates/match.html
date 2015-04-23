@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MagicPoker</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../css/deck.css">
+
+    <script src="../js/jquery/jquery-1.7.2.min.js"></script>
+    <script src="../js/jquery/jquery-ui.min.js"></script>
+    <script src="../js/jquery/jquery.ui.touch-punch.js"></script>
+    <script src="../js/angular/angular.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/socket.io.js"></script>
+    <script src="../js/sense.js"></script>
+
+	</head>
+
+	<body ng-app="myApp" ng-controller="chipsController">
+    <div class="container">
+      <header>
+          <div class="row">
+            <div class="col-xs-4">
+              <button class="log" ng-click="entrar = true" 
+              ng-show="!entrar" style="color:white">
+                <i class="glyphicon glyphicon-log-in"></i>
+                &nbsp; Entrar
+              </button>
+
+              <button class="log" ng-click="entrar = false" ng-model="checked"
+              ng-show="entrar" style="color:white"> 
+                <i class="glyphicon glyphicon-log-out"></i>
+                &nbsp; Sair
+              </button>
+              <!--<button ng-click="entrar = true" ng-show="!entrar">Entrar na mesa</button>
+              <button ng-click="entrar = false" ng-model="checked" ng-show="entrar">Sair da mesa</button>-->
+            </div>
+            <div class="col-xs-8"> <span> Aposta: {{ all () | currency: "R$ " }} </span> </div>
+           </div>
+        </div>
+      </header>
+ 
+    <ul>
+      <li ng-repeat="chip in chips">
+        <div class="chip">
+          <div class="circle">
+            <div class="chip-index"> {{ chip.val | currency: "R$ " }} </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!--<div class="card" style="margin-left: 180px;">
+  			<div class="front red">
+    			<div class="ace">&diams;</div>
+  			</div>
+		</div>-->	
+
+		<div class="card" style="margin-left: 50px;">
+  			<div class="front red">
+    			<div class="index">9<br />&hearts;</div>
+
+    			<div class="spotA1">&hearts;</div>
+    			<div class="spotA2">&hearts;</div>
+    			<div class="spotA4">&hearts;</div>
+    			<div class="spotA5">&hearts;</div>
+
+    			<div class="spotB3">&hearts;</div>
+	
+    			<div class="spotC1">&hearts;</div>
+    			<div class="spotC2">&hearts;</div>
+    			<div class="spotC4">&hearts;</div>
+    			<div class="spotC5">&hearts;</div>
+  			</div>
+		</div>
+
+		<div class="card" style="margin-left: 130px;">
+  				<div class="front red">
+    			<div class="index">Q<br />&diams;</div>
+    				<img class="face" src="../img/queen.gif" alt="rainha" />
+    			<div class="spotA1">&diams;</div>
+    			<div class="spotC5">&diams;</div>
+  			</div>
+		</div> 
+
+  <footer>
+      <div class="row">
+        <div class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button>Fold</button> </div>
+        <div class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button>Call</button> </div>
+        <div class="col-xs-4 col-md-4" ng-show="btnToolbar" ng-click="btnToolbar = false"> <button>Raise</button> </div>
+        <input class="col-xs-8" ng-show="!btnToolbar" type="number" placeholder="Valor da aposta"></input>
+        <input class="col-xs-4" ng-show="!btnToolbar" type="submit" name="aposta" ng-click="btnToolbar = true"> </input>
+      </div>
+  <footer>  
+  </div>
+	</body>
+</html>

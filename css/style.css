@@ -1,9 +1,17 @@
+body {
+  background-color: green;
+}
+
 li { list-style-type: none; }
 
 p {
   color: white; 
   font-size: 20pt;
   cursor: default;
+}
+
+i {
+  font-size: 15pt;
 }
 
 span { 
@@ -28,7 +36,17 @@ footer {
 header {
 }
 
+
 input[type=text] {
+  height: 3em;
+}
+
+.log {
+  background: transparent;
+  border: none;
+}
+
+input[type=number] {
   height: 3em;
 }
 
@@ -40,10 +58,6 @@ input[type=text] {
 #container {
   height: auto; 
   min-height: 100%; 
-}
-
-.background {
-  background-color: green;
 }
 
 .chip {
