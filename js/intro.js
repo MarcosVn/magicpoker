@@ -17,6 +17,10 @@ function introController ($scope) {
     }, 
     { option: 'Seu perfil',
       href: 'templates/perfil.html'
+    },
+    {
+      option: 'Exemplo color-fling',
+      href: 'examples/color_fling.html'
     }
   ];
 
