@@ -3,35 +3,30 @@ var router = require('express').Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.sendfile('examples/color_fling.html');
+	res.sendfile('index.html');
 });
 
-// router.get('/orientation', function(req, res) {
-//   res.sendfile('examples/orientation.html');
-// });
 
-// router.get('/tilt', function(req, res){
-//   res.sendfile('examples/tilt.html');
-// });
+router.get('/client', function(req, res) {
+  res.sendfile('templates/client.html');
+});
 
-// router.get('/flick', function(req, res) {
-//   res.sendfile('examples/flick.html');
-// });
 
-// router.get('/toss', function(req, res) {
-//   res.sendfile('examples/toss.html');
-// });
+router.get('/sala', function(req, res) {
+	res.sendfile('templates/sala.html');
+});
 
-// router.get('/color-fling', function(req, res){
-//   res.sendfile('examples/color_fling.html');
-// });
+router.get('/cassino', function(req, res) {
+	res.sendfile('templates/sala.html');
+});
 
-// router.get('/scroll', function(req, res) {
-//   res.sendfile('examples/scroll.html');
-// });
+router.get('/perfil', function(req, res) {
+	res.sendfile('templates/perfil.html');
+});
 
-// router.get('/flip', function(req, res) {
-//   res.sendfile('examples/flip.html');
-// });
+router.get('/table', function(req, res) {
+	res.sendfile('templates/table.html');
+});
+
 
 module.exports = router;

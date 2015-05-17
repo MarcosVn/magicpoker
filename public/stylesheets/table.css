@@ -1,0 +1,21 @@
+.main {
+  width: 100%;
+}
+
+.table {
+  background-color: green;
+  height: 500px;
+  width: 90%;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 1px solid black;
+  box-shadow: 10px 10px 5px #888888;
+  background: 
+    url('http://zebracocktaillounge.com/wp-content/uploads/2015/02/poker-table-background.jpg');
+}
+
+.board {
+  position: relative;
+  top: 40%;
+  left: 30%;
+}

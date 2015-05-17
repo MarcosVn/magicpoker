@@ -1,8 +1,12 @@
 body {
+  overflow: hidden;
   background-color: green;
 }
 
-li { list-style-type: none; }
+li { 
+  list-style-type: none;
+  width: 71px; 
+}
 
 p {
   color: white; 
@@ -10,9 +14,7 @@ p {
   cursor: default;
 }
 
-i {
-  font-size: 15pt;
-}
+i { font-size: 15pt; }
 
 span { 
   color: white; 
@@ -24,16 +26,14 @@ button {
   width: 100px;
   height: 40px;
   font-size: 10pt;
+  border-radius: 5px;
   z-index: 3;
 }
 
 footer {
   width: 100%;
   position: absolute;
-  bottom: 2em;
-}
-
-header {
+  bottom: 5px;
 }
 
 
@@ -50,53 +50,100 @@ input[type=number] {
   height: 3em;
 }
 
-#start {}
-#end {}
-#max {}
-#rec {
-  margin-left: 600px;
-  width: 200px;
-  height: 200px;
-}
-
 #container {
   height: auto; 
   min-height: 100%; 
 }
 
-.chip {
-  /*background-image: url("../img/ficha.png");*/
-  background-repeat: no-repeat;
-  cursor: pointer;
-  font-weight: bold;
+.pokerchip {
+  position: relative;
+  width: 71px;
+  height: 71px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5), 0 0 3px 0 rgba(0, 0, 0, 0.4) inset;
   border-radius: 50%;
-  width: 4.75em;
-  height: 4.75em;
-  background-color: rgba(0, 0, 255, 0.6);
-  font-style: Arial;
-  color: white;
-  z-index: 10;
-  box-shadow: 5px 5px 5px black;
+  background-size: 151px 151px;
+  background-position: center center;
 }
 
-.circle {
-  width: 70%;
-  height: 70%;
+.pokerchip:before {
+  position: absolute;
+  z-index: 1;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
-  margin-left: 0.8em;
-  margin-top: 0.8em;
-  background-color: white;
+  top: 9px;
+  left: 9px;
+  background-size: 151px 151px;
+  background-position: center center;
 }
 
-.chip-index {
-  font-size: 60%;
-  color: black;
-  font-weight: bold;
+.pokerchip:after {
+  z-index: 2;
+  position: absolute;
   text-align: center;
-  left: 0.5em;
-  top:  0.5em;
-  padding: 1.3em;
+  font: bold 20px/31px Arial;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  top: 20px;
+  left: 20px;
+  text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.3), 1px 1px 0px rgba(255, 255, 255, 0.2);
 }
 
 
-
+/* Colors */
+.chip-white {
+  background-image: linear-gradient(0deg, transparent 0, transparent 67.5px, #fff 67.5px, #fff 83.5px, transparent 83.5px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 97.4304px, #fff 97.4304px, #fff 113.4304px, transparent 113.4304px, transparent 151px), linear-gradient(120deg, #dddddd 0, #dddddd 97.4304px, #fff 97.4304px, #fff 113.4304px, #dddddd 113.4304px, #dddddd 151px);
+}
+.chip-white:before {
+  background-image: linear-gradient(0deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(30deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(90deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(120deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(150deg, #C1C1C1 0, #C1C1C1 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, #C1C1C1 110.7104px, #C1C1C1 151px);
+}
+.chip-white:after {
+  content: "1";
+  background: #dddddd;
+  color: #C1C1C1;
+}
+.chip-red {
+  background-image: linear-gradient(0deg, transparent 0, transparent 67.5px, #fff 67.5px, #fff 83.5px, transparent 83.5px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 97.4304px, #fff 97.4304px, #fff 113.4304px, transparent 113.4304px, transparent 151px), linear-gradient(120deg, #800000 0, #800000 97.4304px, #fff 97.4304px, #fff 113.4304px, #800000 113.4304px, #800000 151px);
+}
+.chip-red:before {
+  background-image: linear-gradient(0deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(30deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(90deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(120deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(150deg, #6C0000 0, #6C0000 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, #6C0000 110.7104px, #6C0000 151px);
+}
+.chip-red:after {
+  content: "5";
+  background: #800000;
+  color: white;
+}
+.chip-blue {
+  background-image: linear-gradient(0deg, transparent 0, transparent 67.5px, #fff 67.5px, #fff 83.5px, transparent 83.5px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 97.4304px, #fff 97.4304px, #fff 113.4304px, transparent 113.4304px, transparent 151px), linear-gradient(120deg, #000099 0, #000099 97.4304px, #fff 97.4304px, #fff 113.4304px, #000099 113.4304px, #000099 151px);
+}
+.chip-blue:before {
+  background-image: linear-gradient(0deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(30deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(90deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(120deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(150deg, #00016C 0, #00016C 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, #00016C 110.7104px, #00016C 151px);
+}
+.chip-blue:after {
+  content: "10";
+  background: #000099;
+  color: white;
+}
+.chip-green {
+  background-image: linear-gradient(0deg, transparent 0, transparent 67.5px, #fff 67.5px, #fff 83.5px, transparent 83.5px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 97.4304px, #fff 97.4304px, #fff 113.4304px, transparent 113.4304px, transparent 151px), linear-gradient(120deg, #008000 0, #008000 97.4304px, #fff 97.4304px, #fff 113.4304px, #008000 113.4304px, #008000 151px);
+}
+.chip-green:before {
+  background-image: linear-gradient(0deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(30deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(90deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(120deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(150deg, #016C00 0, #016C00 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, #016C00 110.7104px, #016C00 151px);
+}
+.chip-green:after {
+  content: "25";
+  background: #008000;
+  color: white;
+}
+.chip-black {
+  background-image: linear-gradient(0deg, transparent 0, transparent 67.5px, #fff 67.5px, #fff 83.5px, transparent 83.5px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 97.4304px, #fff 97.4304px, #fff 113.4304px, transparent 113.4304px, transparent 151px), linear-gradient(120deg, #222222 0, #222222 97.4304px, #fff 97.4304px, #fff 113.4304px, #222222 113.4304px, #222222 151px);
+}
+.chip-black:before {
+  background-image: linear-gradient(0deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(30deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(60deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(90deg, transparent 0, transparent 69.5px, #EBEBEB 69.5px, #EBEBEB 81.5px, transparent 81.5px, transparent 151px), linear-gradient(120deg, transparent 0, transparent 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, transparent 110.7104px, transparent 151px), linear-gradient(150deg, #000000 0, #000000 98.7104px, #EBEBEB 98.7104px, #EBEBEB 110.7104px, #000000 110.7104px, #000000 151px);
+}
+.chip-black:after {
+  content: "100";
+  background: #222222;
+  color: white;
+}

@@ -16,9 +16,9 @@ var io = require('socket.io')(server);
 // Color throw :)
 io.on('connection', function(socket){
   console.log('a user connected');
-  socket.on('color', function(color){
+  socket.on('card', function(color){
     console.log(color);
-    io.emit('color-broadcast', color)
+    io.emit('card-broadcast', color)
   });
 });
 

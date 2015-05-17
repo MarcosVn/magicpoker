@@ -6,7 +6,7 @@
   border-width: 1px;
   border-style: solid;
   color: #000000;
-  font-size: 25pt;
+  font-size: 23pt;
   position: absolute;
   width:  3.75em;
   height: 5.00em;
@@ -21,6 +21,8 @@
   width: 100%;
   height: 100%;
 }
+
+
 
 /* Classes para posicionar os nipes dentro das cartas */
 .spotA1 { position: absolute; left: 0.60em; top: 0.5em; }
@@ -43,7 +45,7 @@
 
 
 /* Cor para os nipes ouros e copas*/
-.red { color: #ff0000; }
+.card .red { color: #ff0000; }
 
 /* Classe para centralizar e aumentar nipe em ases */
 .ace {

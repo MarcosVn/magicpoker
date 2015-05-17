@@ -2,26 +2,26 @@ function introController ($scope) {
   $scope.menuOptions = [
     { 
       option: 'Jogue agora',
-      href: 'templates/match.html'
+      href: '/client'
      }, 
     { 
       option: 'Campeonato',
-      href: 'templates/campeonato.html'
+      href: '/campeonato'
     }, 
     { 
       option: 'Sala Privada',
-      href: 'templates/sala.html'
+      href: '/sala'
     }, 
     { option: 'Selecione o cassino',
-      href: 'templates/cassino.html'
+      href: '/cassino'
     }, 
     { option: 'Seu perfil',
-      href: 'templates/perfil.html'
+      href: '/perfil'
     },
     {
-      option: 'Exemplo color-fling',
-      href: 'examples/color_fling.html'
-    }
+      option: 'Exemplo card-fling',
+      href: '/table'
+    },
   ];
 
   var activeOption;

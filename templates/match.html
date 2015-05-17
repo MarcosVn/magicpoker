@@ -9,20 +9,16 @@
 
     <title>MagicPoker</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-		<link rel="stylesheet" type="text/css" href="../css/deck.css">
-
-    <!--<script src="../js/socket.io.js"></script>
-    <script src="../js/sense.js"></script>-->
+    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+		<link rel="stylesheet" type="text/css" href="../public/stylesheets/deck.css">
     <script src="../js/jquery/jquery-1.7.2.min.js"></script>
     <script src="../js/jquery/jquery-ui.min.js"></script>
     <script src="../js/jquery/jquery.ui.touch-punch.js"></script>
     <script src="../js/angular/angular.min.js"></script>
+    <script src="../js/card/js/card.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/magic.js"></script>
     
-
 	</head>
 
 	<body ng-app="myApp" ng-controller="chipsController">
@@ -64,7 +60,7 @@
     			<div class="ace">&diams;</div>
   			</div>
 		</div>-->	
-
+    
 		<div class="card" style="margin-left: 50px;">
   			<div class="front red">
     			<div class="index">9<br />&hearts;</div>
@@ -82,15 +78,16 @@
     			<div class="spotC5">&hearts;</div>
   			</div>
 		</div>
-
-		<div class="card" style="margin-left: 130px;">
-  				<div class="front red">
-    			<div class="index">Q<br />&diams;</div>
-    				<img class="face" src="../img/queen.gif" alt="rainha" />
-    			<div class="spotA1">&diams;</div>
-    			<div class="spotC5">&diams;</div>
-  			</div>
-		</div> 
+        <deckcard>
+        </deckcard>
+{#		<div class="card" style="margin-left: 130px;">#}
+{#  				<div class="front red">#}
+{#    			<div class="index">Q<br />&diams;</div>#}
+{#    				<img class="face" src="../img/queen.gif" alt="rainha" />#}
+{#    			<div class="spotA1">&diams;</div>#}
+{#    			<div class="spotC5">&diams;</div>#}
+{#  			</div>#}
+{#		</div> #}
 
   <footer>
       <div class="row">
