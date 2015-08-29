@@ -1,20 +1,25 @@
 var myApp = angular.module('myApp', ['cardApp']);
-
+var index = 1;
 myApp.service('clientService', function () {
   var chips = [ 
     {
+      id: 1,
       color: 'pokerchip chip-blue'
     }, 
     {
+      id: 2,
       color: 'pokerchip chip-red'
     },
     {
+      id: 3,
       color: 'pokerchip chip-black'
     },
     {
+      id: 4,
       color: 'pokerchip chip-white'
     },
     {
+      id: 5,
       color: 'pokerchip chip-green'
     }
   ];
@@ -43,7 +48,6 @@ myApp.service('clientService', function () {
   }
 });
 
-
 myApp.controller('chipsController', function chipsController($scope, clientService) {
   $scope.chips = clientService.getChips();
 
@@ -55,38 +59,4 @@ myApp.controller('chipsController', function chipsController($scope, clientServi
   $scope.btnToolbar = clientService.getBtnToolbar();
 });
 
-
-jQuery(document).ready(function () {
-  var raise = jQuery("#btn-raise");
-  var call =  jQuery("#btn-call");
-  var fold = jQuery("#btn-fold")
-  var valueLabel = jQuery("span:contains('Valor da aposta:')");
-  var value = jQuery("input[type=text]").hide();
-  var submit = jQuery("input[type=submit]").hide();
-  var cards = jQuery('.card').draggable();
-  var chip = jQuery('.pokerchip').draggable();
-
-
-
-  jQuery("button:contains('Sair')").click(function(){
-    jQuery('.card').hide();
-    jQuery('.chip').hide();
-    raise.hide();
-    call.hide();
-    fold.hide();
-    jQuery("span:contains('Aposta')").hide();  
-
-  });
-
-  call.click(function () {
-    chip.hide("slow");
-  });
-
-  fold.click(function () {
-    alert('Fez o fold');
-  });
-
-  raise.click(function () {
-  });
-});
 

@@ -22,11 +22,8 @@
         <div class="menu col-md-6 col-md-push-3 col-xs-12 col-sm-12">
           <div style="display: inline-flex"> <h1>MagicPoker</h1> <img style="opacity: 0.9" src="img/indexHat.png"></img> </div>
             <ul>
-            <!--<li ng-repeat="menu in menuOptions" ng-click="toggleActive(menu.option)" 
-              ng-class="{ 'active': isActive(menu.option) }">
-                <a href="{{menu.href}}">{{ menu.option }}</a>
-            </li>-->
-              <li ng-repeat="menu in menuOptions" ng-click="toggleActive(menu.option)">
+              <li ng-repeat="menu in menuOptions" ng-click="toggleActive(menu.option)"
+              style="{{menu.style}}">
                   <a href="{{menu.href}}">{{ menu.option }}</a>
               </li>
           </ul>

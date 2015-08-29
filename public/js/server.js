@@ -1,29 +1,68 @@
-var sense = sense.init();
+//var sense = sense.init();
 var socket = io();
-var deck = $('.card');
-var board = $('.board');
-var selectedCard;
+var currentPot = [];
+var state = -1;
+var value = $('#value').val();
+var cardAudio = document.getElementById('');
 
-/* Detecta o movimento de flick (chicotada) e faz o broadcast da cor selcionada /
-sense.flick(function(data){
-  socket.emit('card', selectedCard.outerHTML);
-});
-*/
+$(document).ready(function () {   
+  var deck = $('.card').draggable();
+  var board = $('.board');
 
-/* guarda a posição da carta no click */  
-$(document).ready(function () {
-  deck.each(function(i, element) {
-    $(element)
-      .click(function(){
-        selectedCard = deck[i];
-        console.log("Vc seleciou a : "+selectedCard);
-        })
-    });
+  function showCards() {
+      deck.show("slow");
+  }
+
+  socket.on('message', function(visitors) {
+      document.getElementById('players').innerHTML = visitors - 1;
+  });
 
   /* listener para cartas que são recebidas */
   socket.on('card-broadcast', function(card){
     selectedCard = card;
-    console.log('Chegou a: '+selectedCard)
     board.append(selectedCard)
+    //cardAudio.play();
+  });
+
+  socket.on('raise-update', function(newValue){
+    alert('Chegou');
+    value = parseInt(document.getElementById('value').innerHTML) + parseInt(newValue);
+    document.getElementById('value').innerHTML = value;  
+  });
+
+  socket.on('blinds-update', function(currentValue) {
+      alert('Chegou');
+      value = parseInt(document.getElementById('value').innerHTML) + currentValue;
+      document.getElementById('value').innerHTML = value;  
+  });
+
+  
+  jQuery('#poker_play_pause').click(function (event) {
+  if (Poker.isGamePaused()) {
+    Poker.startClock();
+  } else {
+    Poker.stopClock();
+  }
+  
+  Poker.updatePlayPauseButton();
+  });
+
+  jQuery('#poker_next_round').on('click', function (event) {
+    Poker.startNextRound();
+  });
+
+  jQuery('body').on('keypress', function (event) {
+    if (Poker.isGamePaused()) {
+      Poker.startClock();
+    } else {
+      Poker.stopClock();
+    }
+  
+    Poker.updatePlayPauseButton();
+  });
+
+  jQuery('.reset').on('click', function (event) {
+    Poker.reset();
   });
 });
+

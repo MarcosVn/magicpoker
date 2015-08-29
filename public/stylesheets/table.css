@@ -1,6 +1,7 @@
-.main {
-  width: 100%;
-}
+body{ background: #2c5a39; } 
+.main { width: 100%; }
+
+
 
 .table {
   background-color: green;
@@ -9,13 +10,171 @@
   border-radius: 50%;
   margin: 0 auto;
   border: 1px solid black;
-  box-shadow: 10px 10px 5px #888888;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
   background: 
     url('http://zebracocktaillounge.com/wp-content/uploads/2015/02/poker-table-background.jpg');
 }
 
 .board {
+  width: 100px;
+  height: 100px;
+}
+
+#poker_play_pause,
+#poker_next_round
+{
+  cursor: pointer;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  width: 50px;
+}
+
+#poker_play_pause span,
+#poker_next_round span
+{
+  cursor: pointer;
+  color: #fff;
+  display: inline-block;
+  font-family: georgia;
+  font-size: 18px;
+  margin-left: -9px;
+  margin-bottom: 5px;
+}
+
+#poker_play_pause a,
+#poker_next_round a
+{
+  cursor: pointer;
+  color: #fff;
+  display: block;
+  font-family: georgia;
+  font-size: 30px;
+  height: 60px;
+  text-decoration: none;
+  width: 60px;
+}
+
+#poker_play_pause
+{
+  cursor: pointer;
+  margin-left: -350px;
+}
+
+#poker_play_pause a
+{
+  background: red;
+  border: 10px dotted #fff;
+  border-radius: 50px;
+}
+
+#poker_play_pause .play span
+{
+  border-color: transparent transparent transparent white;
+  border-style: solid;
+  border-width: 15px;
+  display: block;
+  height: 0px;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -15px;
   position: relative;
-  top: 40%;
-  left: 30%;
+  top: 50%;
+  width: 0px;
+}
+
+#poker_play_pause .pause
+{
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+#poker_play_pause .pause span:before
+{
+  cursor: pointer;
+  content: "=";
+  font-size: 40px;
+  position: relative;
+  bottom: 9px;
+  right: -5px
+}
+
+#poker_next_round
+{
+  margin-left: 250px;
+}
+
+#poker_next_round a
+{
+  background: #333;
+  border: 10px dotted #fff;
+  border-radius: 50px;
+}
+
+h2
+{
+  color: #fff;
+  font-family: georgia;
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 40px;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;
+}
+
+.clock
+{
+  color: #f3fc3f;
+  font-family: georgia;
+  font-size: 50px;
+  margin-top: -80px;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 1) 0px 2px 2px;
+}
+
+#poker_blinds
+{
+  text-align: center;
+}
+
+.blinds
+{
+  text-align: center;
+}
+
+.blinds span
+{
+  color: #f3fc3f;
+  font-family: georgia;
+  font-size: 60px;
+  text-shadow: rgba(0, 0, 0, 1) 0px 2px 2px;
+}
+
+#poker_blinds > span
+{
+  color: #fff;
+  display: block;
+  font-family: georgia;
+  font-size: 30px;
+  text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;
+}
+
+audio { display: none; }
+
+.clearfix { *zoom: 1; }
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
 }

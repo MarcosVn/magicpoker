@@ -19,8 +19,9 @@ function introController ($scope) {
       href: '/perfil'
     },
     {
-      option: 'Exemplo card-fling',
-      href: '/table'
+      option: 'Servidor',
+      href: '/table',
+      style: 'visibility: hidden'
     },
   ];
 

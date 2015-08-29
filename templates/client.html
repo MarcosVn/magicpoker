@@ -29,10 +29,10 @@
     <div class="container-fluid">
       <header>
         <button class="log" ng-click="entrar = false" ng-model="checked"
-          ng-show="entrar" style="color:white"> 
+          style="color:white; font-weight: bold"> 
           <i class="glyphicon glyphicon-log-out"></i>
-          &nbsp; Sair
-        </button>
+          &nbsp; <a href="/"> Sair </a>
+         </button>
       </header> 
       <ul>
         <li ng-repeat="chip in chips">
@@ -40,25 +40,16 @@
         </li>
       </ul>
 
-      
-      <div id="card-two">
-        <div class="card" style="margin-left: 180px;">
-            <div class="front red">
-            <div class="index">Q<br />&diams;</div>
-            <img class="face" src="img/queen.gif" alt="rainha" />
-            <div class="spotA1">&diams;</div>
-            <div class="spotC5">&diams;</div>
-        </div>
-        </div> 
-      </div>  
+      <div class="card nine_diamonds"></div>
+        
 
   <footer>
     <div class="row">
-      <div id="btn-fold"class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button>Fold</button> </div>
-      <div id="btn-call" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button>Call</button> </div>
-      <div id="btn-raise" class="col-xs-4 col-md-4" ng-show="btnToolbar" ng-click="btnToolbar = false"> <button>Raise</button> </div>
-      <input class="col-xs-8" ng-show="!btnToolbar" type="number" placeholder="Valor da aposta"></input>
-      <input class="col-xs-4" ng-show="!btnToolbar" type="submit" name="aposta" ng-click="btnToolbar = true"> </input>
+      <div id="btn-fold"class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Fold</button> </div>
+      <div id="btn-call" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Call</button> </div>
+      <div id="btn-raise" class="col-xs-4 col-md-4" ng-show="btnToolbar" ng-click="btnToolbar = false"> <button class="btngrp">Raise</button> </div>
+      <input id="aposta" class="col-xs-8" ng-show="!btnToolbar" type="number" placeholder="Valor da aposta"></input>
+      <input class="col-xs-4" ng-show="!btnToolbar" type="submit" ng-click="btnToolbar = true"> </input>
     </div>
   <footer>
   </div>

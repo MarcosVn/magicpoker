@@ -10,19 +10,69 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/deck.css">
 
   <link rel="stylesheet" type="text/css" href="stylesheets/table.css">
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <script src="js/jquery/jquery-1.7.2.min.js"></script>
+  <script src="js/jquery/jquery-ui.min.js"></script>
+  <script src="js/jquery/jquery.ui.touch-punch.js"></script>
   <script src="js/sense.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="js/table.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+  <div style="color:white; font-size: 20px;
+  text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;font-family:georgia;">Jogadores na mesa:<span id="players" style="margin-left: 20px; font-size: 20px;">0</span></div>
   <div class="main">
+    <div id="poker_clock" class="clearfix">
+  
+ <div id="poker_play_pause">
+    <span>Iniciar/Pausar</span>
+    <a title="Play/Pause" class="play">
+      <span></span>
+    </a>
+  </div>
+  
+  <div id="poker_next_round">
+    <span>Próxima&nbsp;Rodada</span>
+    <a title="Next Round">$</a>
+
+      <span></span>
+  </div>
+  <h2 id="round">Rodada 1</h2>
+  <div class="clock">15:00</div>
+  
+  <div id="poker_blinds">
+    <div class="blinds">
+      <span class="small-blind">5</span>
+      <span class="separator">/</span>
+      <span class="big-blind">10</span>
+    </div>
+   
+  </div>
+  
+  <!-- <a href="#" class="reset">Reset</a>
+   -->
+  <audio id="alarm" controls="controls">
+  <source src="http://soundjax.com/reddo/73797%5Ealarmclock.mp3" type="audio/mpeg" />
+    Seu navegador não suporta o som utilizado.
+  </audio>
+</div>
     <div class="table">
-      <div class="board">
+      <div class="board" style="margin: 125px 25% 0 70%">
+          <span style="text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;
+          z-index: 5000; font-size: 90; font-weight:bold; color: white;font-family: georgia" id="value">1</span>
+      </div>
+      <div style="margin-top: -220px;">
+        <div class="card nine_diamonds"></div>
+        <div class="card ten_diamonds"></div>
+        <div class="card jack_diamonds"></div>
+        <div class="card queen_diamonds"></div>
+        <div class="card king_diamonds"></div>
       </div>
     </div>
   </div>
+
 </body>
 <script src="js/server.js"></script>
 </html>
