@@ -10,7 +10,6 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/deck.css">
 
   <link rel="stylesheet" type="text/css" href="stylesheets/table.css">
-  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
   <script src="js/jquery/jquery-1.7.2.min.js"></script>
   <script src="js/jquery/jquery-ui.min.js"></script>
   <script src="js/jquery/jquery.ui.touch-punch.js"></script>
@@ -58,17 +57,19 @@
     Seu navegador não suporta o som utilizado.
   </audio>
 </div>
+    <!-- <div class="player"><img src="/img/player.png"></img></div> -->
     <div class="table">
-      <div class="board" style="margin: 125px 25% 0 70%">
-          <span style="text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;
-          z-index: 5000; font-size: 90; font-weight:bold; color: white;font-family: georgia" id="value">1</span>
-      </div>
-      <div style="margin-top: -220px;">
+      <div style="height: 100px">
         <div class="card nine_diamonds"></div>
         <div class="card ten_diamonds"></div>
         <div class="card jack_diamonds"></div>
         <div class="card queen_diamonds"></div>
         <div class="card king_diamonds"></div>
+      </div>
+      <div class="board" style="margin: 125px 25% 0 70%; display: inline">
+          <span>Aposta atual:</span>
+          <span style="text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;
+          z-index: 5000; font-size: 90; font-weight:bold; color: white;font-family: georgia" id="value">1</span>
       </div>
     </div>
   </div>

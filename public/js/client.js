@@ -7,11 +7,6 @@ function fold() {
 
 }
 
-function call() {
-
-}
-
-
 function turnDown() {
   jQuery(selectedCard).empty();
 }
@@ -30,6 +25,8 @@ jQuery(document).ready(function () {
   var cards = jQuery('.card').draggable();
   var chip = jQuery('.pokerchip').draggable();
 
+  socket.emit('newplayer', {id: 1, nickname: 'Marcos'});
+  console.log('Foi');
 
   deck.each(function(i, element) {
     jQuery(element)
@@ -45,6 +42,11 @@ jQuery(document).ready(function () {
     socket.emit('card', selectedCard.outerHTML);
     turnDown();  
   });
+
+  socket.on('update-blinds', function(blinds) {
+      currentValue = blinds;
+  });
+
 
 
   jQuery("button:contains('Sair')").click(function(){
@@ -63,19 +65,13 @@ jQuery(document).ready(function () {
   });
 
   fold.click(function () {
+    // enviar o id do jogador logado para indicar que ele saiu 
   });
 
   submit.click(function() {
     var x = $('#aposta').val();
     socket.emit('raise', x);
-    alert('Mandou');
-  });
-
-  raise.click(function() {
-    function raise(value) {
-      currentValue = currentValue - value;
-      alert('Aposta feita!');
-    }
+    alert('Fez o raise');
   });
 });
 

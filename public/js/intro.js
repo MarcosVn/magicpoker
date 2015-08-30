@@ -2,21 +2,27 @@ function introController ($scope) {
   $scope.menuOptions = [
     { 
       option: 'Jogue agora',
-      href: '/client'
+      href: '/client',
+      clas: 'glyphicon glyphicon-flash'
      }, 
     { 
       option: 'Campeonato',
-      href: '/campeonato'
+      href: '/campeonato',
+      //clas: 'glyphicon glyphicon-glass'
+      clas: 'glyphicon glyphicon-gift'
     }, 
     { 
       option: 'Sala Privada',
-      href: '/sala'
+      href: '/sala',
+      clas: 'glyphicon glyphicon-lock'
     }, 
     { option: 'Selecione o cassino',
-      href: '/cassino'
+      href: '/cassino',
+      clas: 'glyphicon glyphicon-globe'
     }, 
     { option: 'Seu perfil',
-      href: '/perfil'
+      href: '/perfil',
+      clas: 'glyphicon glyphicon-user'
     },
     {
       option: 'Servidor',
