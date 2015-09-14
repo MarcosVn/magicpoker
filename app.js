@@ -4,22 +4,9 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-
-var db = mongoose.connection;
-
-db.on('error', console.error);
-db.once('open', function() {
-  console.log('Conectado ao MongoDB.')
-  // Vamos adicionar nossos Esquemas, Modelos e consultas aqui
-});
-
-mongoose.connect('mongodb://localhost/test');
 
 
 var passport = require('passport');
-//var dbConfig = require('./db.js');
-var LocalStrategy = require('passport-local').Strategy;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
@@ -45,9 +32,13 @@ io.on('connection', function(socket){
    });
 
 
+  socket.on('user', function(user) {
+    io.emit('user-logged', user);
+  });
+
   /* Definição do listener para envio da carta client - server */
   socket.on('card', function(card){
-    io.emit('card-broadcast', card)
+    io.emit('card-broadcast', card);
   });
 
   /* Definição do listener para update dos valores de aposta server - client */
@@ -66,12 +57,7 @@ server.listen(8000, function(){
 });
 
 
-//mongoose.connect(dbConfig.url);
 
-
-//app.use(expressSession({secret: 'minhaChaveSecreta'}));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -86,14 +72,6 @@ app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-});
-
-
-var Schema = mongoose.Schema;
- 
-var contatoSchema = new Schema({
-  name: { type: String, required: true },
-  password: { type: String, required: true }
 });
 
 module.exports = app;

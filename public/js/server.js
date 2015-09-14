@@ -1,9 +1,8 @@
-//var sense = sense.init();
 var socket = io();
 var currentPot = [];
 var state = -1;
 var value = $('#value').val();
-var cardAudio = document.getElementById('');
+var cardAudio = document.getElementById('cardFlip');
 var flop = true;
 var turn = true;
 var onlinePlayers = 0;
@@ -12,33 +11,42 @@ var smallBlind = 0;
 var bigBlind = 0;
 var players = {};
 var index = 1;
+var id = 0;
 
 
 $(document).ready(function () {   
-  var deck = $('.card').draggable().hide();
+  //var deck = $('.card').hide();
   var board = $('.board');
+  console.log(players);
+
+  if(onlinePlayers < 2) {
+    $('#poker_play_pause').attr('disabled', 'disabled');
+  }
 
   socket.on('message', function(visitors, playerData) {
       onlinePlayers = visitors - 1;
       document.getElementById('players').innerHTML = visitors - 1;
-  });
 
-  /* listener para cartas que são recebidas */
-  socket.on('card-broadcast', function(card){
-    selectedCard = card;
-    board.append(selectedCard);
-    //cardAudio.play();
-  });
-
-  socket.on('player-connected', function(playerData){
-      console.log(isOnline(playerData.id));
-      if(!isOnline(playerData.id)) {
-        if(index <= onlinePlayers) 
-          players[index++] = playerData;
-
-        alert(players[1].nickname+' conectou!!');
+      if(onlinePlayers > 2) {
+        $('#poker_play_pause').removeAttr('disabled');
       }
   });
+
+  socket.on('user-logged', function(user) {
+    if(!isOnline(user)) {
+      players[index++] = {id: user};
+      id++;
+    }
+    updatePlayersName(players);
+  });
+
+
+  socket.on('card-broadcast', function(card){
+    board.append(card[0]);
+    board.append(card[1]);
+    cardAudio.play();
+  });
+
 
   socket.on('raise-update', function(newValue){
     if(newValue > 0) {
@@ -47,20 +55,19 @@ $(document).ready(function () {
     }
   });
 
-  /*if(flop) {
-    alert('Início do flop!!');
-    $('.card:lt(3)').fadeIn(3000);
-  }
+  socket.on('end-turn', function (flag) {
+    f = flag;
+    if(flag == 'F') {
+      changeTurn('lt(3)');
+    }
+    else if (flag == 'T') {
+      changeTurn('eq(4)');
+    }
 
-  if(turn) {
-    alert('Início do turn!!');
-    $('.card:eq(3)').fadeIn(3000);
-  }
-
-  if(river) {
-    alert('Início do river!!');
-    $('.card:eq(4)').fadeIn(3000);
-  }*/
+    else {
+      changeTurn('eq(4)');  
+    }
+  });
 
   socket.on('blinds-update', function(currentValue) {
       alert('Chegou');
@@ -69,20 +76,18 @@ $(document).ready(function () {
   });
 
 
-  function isOnline(playerId) {
+  function isOnline(user) {
     for(var player in players) {
-      if(players[player].id == playerId) return true;
+      if(players[player].id == user) return true;
     }
     return false;
   }
 
-  // função genérica para alternar entre flop, river, turn
   function changeTurn(msg, selector) {
     alert('Início do '+msg+'!!');
     $('.card:'+selector).fadeIn(3000);
   }
   
-
   jQuery('#poker_play_pause').click(function (event) {
   if (Poker.isGamePaused()) {
     Poker.startClock();

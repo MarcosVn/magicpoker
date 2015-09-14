@@ -63,10 +63,11 @@ input[type=text] {
 .log {
   background: transparent;
   border: none;
+  margin-left: -10px;
 }
 
 .btngrp {
-  background-color: #ea6153;
+  background-color: seagreen;
   color: white;
   font-weight: bold;
   border-radius: 8px;
@@ -83,8 +84,8 @@ input[type=number] {
 
 .pokerchip {
   position: relative;
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5), 0 0 3px 0 rgba(0, 0, 0, 0.4) inset;
   border-radius: 50%;
   background-size: 151px 151px;
@@ -107,9 +108,9 @@ input[type=number] {
   z-index: 2;
   position: absolute;
   text-align: center;
-  font: bold 15px/31px Arial;
-  width: 31px;
-  height: 31px;
+  font: bold 12px/25px Arial;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   top: 12px;
   left: 13px;

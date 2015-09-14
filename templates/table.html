@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body ng-app="" ng-controller="tableController">
   <div style="color:white; font-size: 20px;
   text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;font-family:georgia;">Jogadores na mesa:<span id="players" style="margin-left: 20px; font-size: 20px;">0</span></div>
   <div class="main">
@@ -59,21 +59,23 @@
 </div>
     <!-- <div class="player"><img src="/img/player.png"></img></div> -->
     <div class="table">
-      <div style="height: 100px">
-        <div class="card nine_diamonds"></div>
-        <div class="card ten_diamonds"></div>
-        <div class="card jack_diamonds"></div>
-        <div class="card queen_diamonds"></div>
-        <div class="card king_diamonds"></div>
+      <div style="height: 1000px; display: inline-flex; margin: 200px" >
+        <!--<div class="card nine_diamonds"></div>-->
+              <div ng-repeat="card in sortedCards"
+              class="{{card.style}}"></div>
+   
       </div>
+      
       <div class="board" style="margin: 125px 25% 0 70%; display: inline">
-          <span>Aposta atual:</span>
-          <span style="text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;
-          z-index: 5000; font-size: 90; font-weight:bold; color: white;font-family: georgia" id="value">1</span>
+          <span>Cartas descartadas</span>
+          <!--<span style="text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;
+          z-index: 5000; font-size: 90; font-weight:bold; color: white;font-family: georgia" id="value">1</span>-->
       </div>
     </div>
   </div>
 
 </body>
+<script src="js/angular/angular.min.js"></script>
+<script src="js/serverController.js"></script>
 <script src="js/server.js"></script>
 </html>

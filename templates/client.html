@@ -29,21 +29,24 @@
     <div class="container-fluid">
       <header>
         <button class="log" ng-click="entrar = false" ng-model="checked"
-          style="color:white; font-weight: bold"> 
+          style="color:white; font-weight: bold; float: left;"> 
           <i class="glyphicon glyphicon-log-out"></i>
           &nbsp; <a href="/"> Sair </a>
          </button>
+         <div style="color: white; float: right; margin: 10px; padding: 10px">Chat&nbsp;&nbsp;<i class="glyphicon glyphicon-comment"></i></div>
+         <div style="color: white; float: right; margin: 10px; padding: 10px">Camera&nbsp;&nbsp;<i class="glyphicon glyphicon-camera"></i></div>
+         <div style="color: white; float: right; margin: 5px; padding: 10px; margin-top: 1px; magin-right: 50px;">Tempo para jogar: --&nbsp;&nbsp;<i class="glyphicon glyphicon-time"></i></div>
       </header> 
       <ul>
         <li ng-repeat="chip in chips">
           <div class="{{ chip.color }}"></div>
         </li>
       </ul>
-
+      <div class="card king_diamonds"></div>
       <div class="card nine_diamonds"></div>
   <footer>
     <div class="row">
-      <div id="btn-fold"class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Fold</button> </div>
+      <div id="btn-fold" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Fold</button> </div>
       <div id="btn-call" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Call</button> </div>
       <div id="btn-raise" class="col-xs-4 col-md-4" ng-show="btnToolbar" ng-click="btnToolbar = false"> <button class="btngrp">Raise</button> </div>
       <input id="aposta" class="col-xs-8" ng-show="!btnToolbar" type="number" placeholder="Valor da aposta"></input>

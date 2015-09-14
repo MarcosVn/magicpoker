@@ -1,46 +1,36 @@
 var sense = sense.init();
 var socket = io();
-var selectedCard;
+var selectedCard = null;
 var currentValue;
 
-function fold() {
-
-}
-
-function turnDown() {
-  jQuery(selectedCard).empty();
-}
-
-/* guarda a posição da carta ao selecionar */  
 jQuery(document).ready(function () {
+  var usuario = window.localStorage.getItem('usuario');
+  socket.emit('user', usuario);
+
   var deck = jQuery('.card');
-  var firstCard = jQuery('#card-one');
-  var secondCard = jQuery('#card-two');
   var raise = jQuery("#btn-raise");
   var call =  jQuery("#btn-call");
-  var fold = jQuery("#btn-fold")
+  var fold = jQuery("#btn-fold");
   var valueLabel = jQuery("span:contains('Valor da aposta:')");
   var value = jQuery("input[type=text]").hide();
   var submit = jQuery("input[type=submit]").hide();
   var cards = jQuery('.card').draggable();
   var chip = jQuery('.pokerchip').draggable();
+  var cards = new Array();
 
-  socket.emit('newplayer', {id: 1, nickname: 'Marcos'});
-  console.log('Foi');
+  cards.push(deck[0].outerHTML, deck[1].outerHTML);
 
   deck.each(function(i, element) {
     jQuery(element)
       .click(function(){
         selectedCard = deck[i];
         alert('Carta selecionada!');
-        })
-    });
+      });
+  });
 
-  /* Detecta o movimento de flick (chicotada) e faz o broadcast da cor selcionada */
-  /* Ação Fold */
-  sense.flick(function(data){
-    socket.emit('card', selectedCard.outerHTML);
-    turnDown();  
+  sense.flick(function(data) {
+    //socket.emit('card', selectedCard.outerHTML);
+    socket.emit('card', cards);  
   });
 
   socket.on('update-blinds', function(blinds) {
@@ -65,7 +55,8 @@ jQuery(document).ready(function () {
   });
 
   fold.click(function () {
-    // enviar o id do jogador logado para indicar que ele saiu 
+    alert('Fold clicado');
+    foldf = true;
   });
 
   submit.click(function() {
