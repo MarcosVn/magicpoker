@@ -21,29 +21,35 @@
   <script src="js/sense.js"></script>
   <script src="js/card/js/card.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/clientController.js"></script>
 </head>
 
 
-
 <body ng-app="myApp" ng-controller="chipsController">
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="handController">
       <header>
         <button class="log" ng-click="entrar = false" ng-model="checked"
           style="color:white; font-weight: bold; float: left;"> 
           <i class="glyphicon glyphicon-log-out"></i>
           &nbsp; <a href="/"> Sair </a>
          </button>
+
          <div style="color: white; float: right; margin: 10px; padding: 10px">Chat&nbsp;&nbsp;<i class="glyphicon glyphicon-comment"></i></div>
          <div style="color: white; float: right; margin: 10px; padding: 10px">Camera&nbsp;&nbsp;<i class="glyphicon glyphicon-camera"></i></div>
          <div style="color: white; float: right; margin: 5px; padding: 10px; margin-top: 1px; magin-right: 50px;">Tempo para jogar: --&nbsp;&nbsp;<i class="glyphicon glyphicon-time"></i></div>
+         <!-- <div style="float: right; width: 30px; height: 30px; color: white; background-color: blue; border-radius: 50%; margin-top: 100px; margin-right: -300px">D</div>-->
+
+        <div id="dealer" style="float: right; margin: 100px -300px 0 0"> <img src="../img/dealer48.png"></img></div>
       </header> 
       <ul>
         <li ng-repeat="chip in chips">
           <div class="{{ chip.color }}"></div>
         </li>
       </ul>
-      <div class="card king_diamonds"></div>
-      <div class="card nine_diamonds"></div>
+      <!--<div class="card king_diamonds"></div>
+      <div class="card nine_diamonds"></div>-->
+      <div ng-repeat="card in sortedCards"
+              class="{{card.style}}" style="float: left"></div>
   <footer>
     <div class="row">
       <div id="btn-fold" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Fold</button> </div>

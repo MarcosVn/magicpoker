@@ -14,7 +14,7 @@ body{ background: #2c5a39; }
 -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
   background: 
-    url('http://zebracocktaillounge.com/wp-content/uploads/2015/02/poker-table-background.jpg');
+    url('../img/tablebackground.jpg');
 }
 
 .board {

@@ -2,15 +2,21 @@ var sense = sense.init();
 var socket = io();
 var selectedCard = null;
 var currentValue;
+var userData = {};
+var x = "";
 
 jQuery(document).ready(function () {
   var usuario = window.localStorage.getItem('usuario');
+  x = socket.io.engine.id;
+  userData = {playerId: x, nickname: usuario};
+  //socket.emit('user', socket.id);
   socket.emit('user', usuario);
 
   var deck = jQuery('.card');
   var raise = jQuery("#btn-raise");
   var call =  jQuery("#btn-call");
   var fold = jQuery("#btn-fold");
+  var dealer = jQuery('#dealer').hide();
   var valueLabel = jQuery("span:contains('Valor da aposta:')");
   var value = jQuery("input[type=text]").hide();
   var submit = jQuery("input[type=submit]").hide();
@@ -37,6 +43,12 @@ jQuery(document).ready(function () {
       currentValue = blinds;
   });
 
+
+  socket.on('pflop', function(preFlopData){
+    alert('entrou');
+    alert(preFlopData);
+    dealer.show();
+  })
 
 
   jQuery("button:contains('Sair')").click(function(){
@@ -65,13 +77,3 @@ jQuery(document).ready(function () {
     alert('Fez o raise');
   });
 });
-
-/* listener para cartas que são recebidas 
-socket.on('card-broadcast', function(card){
-  secondCard.empty();
-  selectedCard = card;
-  alert('Chegou a: '+selectedCard)
-  secondCard.append(selectedCard)
-  //secondCard.replaceWith(selectedCard);
-});
-*/

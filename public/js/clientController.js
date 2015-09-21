@@ -1,6 +1,4 @@
-var sorted = [];
-
-function tableController ($scope) {
+function handController ($scope) {
   $scope.contains = false;
   $scope.allCards = [
     { 
@@ -154,11 +152,11 @@ function tableController ($scope) {
     },
     { 
       id: 38,
-      style:  'card queen_spades'   
+      style: 'card queen_spades'   
     },
     { 
       id: 39,
-      style:  'card king_spades'   
+      style: 'card king_spades'   
     },
     { 
       id: 40,
@@ -170,43 +168,43 @@ function tableController ($scope) {
     },
     { 
       id: 42,
-      style: 'card three_diamonds' 
+      style: 'three_diamonds' 
     },
     { 
       id: 43,
-      style:  'card four_diamonds'  
+      style: 'card four_diamonds'  
     },
     { 
       id: 44,
-      style:   'card five_diamonds' 
+      style: 'card five_diamonds' 
     },
     { 
       id: 45,
-      style:  'card six_diamonds' 
+      style: 'card six_diamonds' 
     },
     { 
       id: 46,
-      style:  'card seven_diamonds'  
+      style: 'card seven_diamonds'  
     },
     { 
       id: 47,
-      style:   'card eight_diamonds' 
+      style: 'card eight_diamonds' 
     },
     { 
       id: 48,
-      style:  'card nine_diamonds'  
+      style: 'card nine_diamonds'  
     },
     { 
       id: 49,
-      style:   'card ten_diamonds' 
+      style: 'card ten_diamonds' 
     },
     { 
       id: 50,
-      style:  'card jack_diamonds'  
+      style: 'card jack_diamonds'  
     },
     { 
       id: 51,
-      style:  'card queen_diamonds'  
+      style: 'card queen_diamonds'  
     },
     { 
       id: 52,
@@ -214,12 +212,12 @@ function tableController ($scope) {
     }
   ];
 
-  $scope.sortedIndexes = [];
+
   $scope.sortedCards = [];
 
 
   $scope.selectGameCards = function($scope) {
-    while($scope.sortedCards.length < 5)
+    while($scope.sortedCards.length < 2)
     {
       var random = Math.floor(Math.random() * ($scope.allCards.length));
       
@@ -228,20 +226,17 @@ function tableController ($scope) {
       };
 
       if(!$scope.contains) {
-        $scope.sortedCards.push({ id: random, style: $scope.allCards[random].style });
-        $scope.sortedIndexes.push(random);  
+        $scope.sortedCards.push({ id: random, style: $scope.allCards[random].style });  
       }
-
 
       $scope.contains = false;
     }
     return $scope.sortedCards;
   }
 
-  sorted = $scope.sortedIndexes;
   $scope.sortedCards = $scope.selectGameCards($scope);
   console.log($scope.sortedCards);
-  console.log(sorted);
+
 }
 
 

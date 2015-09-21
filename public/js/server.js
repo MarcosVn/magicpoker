@@ -11,40 +11,38 @@ var smallBlind = 0;
 var bigBlind = 0;
 var players = {};
 var index = 1;
-var id = 0;
-
+var players = [];
+var sortedIndexes = [];
+var preFlopData = {};
 
 $(document).ready(function () {   
-  //var deck = $('.card').hide();
+  var deck = $('.card').hide();
+  var startButton = $('#poker_play_pause').hide();
   var board = $('.board');
-  console.log(players);
 
-  if(onlinePlayers < 2) {
-    $('#poker_play_pause').attr('disabled', 'disabled');
-  }
+  socket.on('user-logged', function(userData){
+      players.push({id: index++, data: userData});
+      // a linha abaixo é um exemplo de como enviar um evento servidor para um socket especifico
+      //socket.emit('blah1', players[players.length - 1].id);
+  });
 
-  socket.on('message', function(visitors, playerData) {
+
+  sortedIndexes = sorted;
+
+  socket.on('message', function(visitors) {
       onlinePlayers = visitors - 1;
       document.getElementById('players').innerHTML = visitors - 1;
-
-      if(onlinePlayers > 2) {
-        $('#poker_play_pause').removeAttr('disabled');
+      if(onlinePlayers >= 2) {
+        $('#poker_play_pause').show();
+        $('#cantstart').hide();
       }
   });
 
-  socket.on('user-logged', function(user) {
-    if(!isOnline(user)) {
-      players[index++] = {id: user};
-      id++;
-    }
-    updatePlayersName(players);
-  });
-
-
   socket.on('card-broadcast', function(card){
+    console.log(card);
     board.append(card[0]);
     board.append(card[1]);
-    cardAudio.play();
+    //cardAudio.play();
   });
 
 
@@ -89,12 +87,18 @@ $(document).ready(function () {
   }
   
   jQuery('#poker_play_pause').click(function (event) {
+    alert('Pré-flop');
+    event.preventDefault();
   if (Poker.isGamePaused()) {
     Poker.startClock();
-    dealer = Math.floor(Math.random() * (onlinePlayers)) + 1;
+    dealer = Math.floor(Math.random() * (onlinePlayers - 1)) + 1;
     smallBlind = dealer + 1;
     bigBlind = smallBlind + 1;
-    alert(dealer);
+    //changeTurn('Flop', 'lt(3)');
+    preFlopData = {sorted: sortedIndexes, player: players[dealer].data.id};
+    console.log(preFlopData);
+    socket.emit('pre-flop', preFlopData);
+    //socket.emit('pre-flop', players[dealer].data.id);
   } else {
     Poker.stopClock();
   }

@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <title> Magic Poker </title>
   <link rel="icon" type="image/png" href="img/hat.png" />
-  <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="stylesheets/deck.css">
   <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-  <link rel="stylesheet" type="text/css" href="stylesheets/deck.css">
+
 
   <link rel="stylesheet" type="text/css" href="stylesheets/table.css">
   <script src="js/jquery/jquery-1.7.2.min.js"></script>
+  <script src="js/serverController.js"></script>
   <script src="js/jquery/jquery-ui.min.js"></script>
   <script src="js/jquery/jquery.ui.touch-punch.js"></script>
   <script src="js/sense.js"></script>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="js/angular/angular.min.js"></script>
+  <script src="js/server.js"></script>
   <script src="js/table.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -24,11 +27,16 @@
   text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;font-family:georgia;">Jogadores na mesa:<span id="players" style="margin-left: 20px; font-size: 20px;">0</span></div>
   <div class="main">
     <div id="poker_clock" class="clearfix">
-  
+
+
+
+ <div id="sortedIndexes" ng-model="sortedIndexes">{{sortedIndexes}}</div>
  <div id="poker_play_pause">
     <span>Iniciar/Pausar</span>
+    
     <a title="Play/Pause" class="play">
-      <span></span>
+      <span>
+      </span>
     </a>
   </div>
   
@@ -47,22 +55,23 @@
       <span class="separator">/</span>
       <span class="big-blind">10</span>
     </div>
-   
+    
   </div>
+  <div id="cantstart" style="margin: -100px 0 0 100px" title="É necessário haver pelo menos dois jogadores à mesa para iniciar"><img src="../img/alert.png" ></img></div>
   
   <!-- <a href="#" class="reset">Reset</a>
    -->
   <audio id="alarm" controls="controls">
-  <source src="http://soundjax.com/reddo/73797%5Ealarmclock.mp3" type="audio/mpeg" />
+  <!--<source src="http://soundjax.com/reddo/73797%5Ealarmclock.mp3" type="audio/mpeg" />-->
     Seu navegador não suporta o som utilizado.
   </audio>
 </div>
     <!-- <div class="player"><img src="/img/player.png"></img></div> -->
     <div class="table">
-      <div style="height: 1000px; display: inline-flex; margin: 200px" >
+      <div style="height: 1000px; margin: 200px" >
         <!--<div class="card nine_diamonds"></div>-->
               <div ng-repeat="card in sortedCards"
-              class="{{card.style}}"></div>
+              class="{{card.style}}" style="float: left"></div>
    
       </div>
       
@@ -75,7 +84,4 @@
   </div>
 
 </body>
-<script src="js/angular/angular.min.js"></script>
-<script src="js/serverController.js"></script>
-<script src="js/server.js"></script>
 </html>

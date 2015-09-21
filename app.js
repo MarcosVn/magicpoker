@@ -4,23 +4,23 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-
-var passport = require('passport');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var visitors = 0;
-
+var clients = [];
 
 io.on('connection', function(socket){
-  console.log('a user connected');
   visitors++;
+  console.info('New client connected (id=' + socket.id + ').');
+
   socket.emit('message', visitors);
   socket.broadcast.emit('message', visitors);
 
+  clients.push(socket);
    
    socket.on('newplayer', function(playerData){
       socket.broadcast.emit('player-connected', playerData);  
@@ -32,8 +32,17 @@ io.on('connection', function(socket){
    });
 
 
+   socket.on('pre-flop', function(preFlopData){
+      console.info('entrou no pre-flop');
+      console.info(preFlopData);
+      //io.sockes.connected[preFlopData].emit('pflop', 'Início do fflooop caralho');
+      io.sockets.connected[preFlopData.player].emit('pflop', preFlopData.sorted);
+   });
+
   socket.on('user', function(user) {
-    io.emit('user-logged', user);
+    //io.emit('user-logged', socket.id);
+    var userData = {id: socket.id, nickname: user};
+    io.emit('user-logged', userData);
   });
 
   /* Definição do listener para envio da carta client - server */
