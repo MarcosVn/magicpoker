@@ -1,8 +1,6 @@
 var router = require('express').Router();
 var dbOperations = require("../models/dbOperations.js");
-var passport = require('passport'),
-    TwitterStrategy = require('passport-twitter').Strategy,
-    ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 
 /* GET home page. */

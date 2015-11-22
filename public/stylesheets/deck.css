@@ -1,6 +1,6 @@
 
-/* Classe carta, por default a primeira posição é a de baixo*/
-/*.card {
+/* Classe carta, por default a primeira posição é a de baixo
+.card {
   background-image: url("../img/cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -39,7 +39,7 @@
 .ace_clubs {
  width: 71px;
  height: 97px;
- background: url(img/cardsSprite.png) -2px -1px;
+ background: url(/img/cardsSprite.png) -2px -1px;
 }
 
 .two_clubs {
@@ -94,7 +94,6 @@
  width: 71px;
  height: 97px;
  background: url(/img/cardsSprite.png) -658px -1px;
-z-index: 50;
 }
 
 .jack_clubs {
@@ -107,7 +106,6 @@ z-index: 50;
 
  width: 71px;
  height: 97px; 
- margin-top: 200px;
  background: url(/img/cardsSprite.png) -804px -1px;
 }
 
@@ -312,7 +310,6 @@ z-index: 50;
 .seven_diamonds {
  width: 71px;
  height: 97px;
- margin-top: 200px;
  
  background: url(/img/cardsSprite.png) -440px -295px;
 }

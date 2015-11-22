@@ -9,7 +9,6 @@ jQuery(document).ready(function () {
   var usuario = window.localStorage.getItem('usuario');
   x = socket.io.engine.id;
   userData = {playerId: x, nickname: usuario};
-  //socket.emit('user', socket.id);
   socket.emit('user', usuario);
 
   var deck = jQuery('.card');
@@ -35,7 +34,6 @@ jQuery(document).ready(function () {
   });
 
   sense.flick(function(data) {
-    //socket.emit('card', selectedCard.outerHTML);
     socket.emit('card', cards);  
   });
 
@@ -43,12 +41,31 @@ jQuery(document).ready(function () {
       currentValue = blinds;
   });
 
-
   socket.on('pflop', function(preFlopData){
-    alert('entrou');
-    alert(preFlopData);
+    alert('Pré-flop');
     dealer.show();
   })
+
+  socket.on('flop', function() {
+    alert('flop');
+  });
+
+
+  socket.on('turn', function() {
+    alert('turn');
+  });
+
+  socket.on('river', function() {
+    alert('river');
+  });
+
+  socket.on('sblind', function() {
+    alert('small blind');
+  });
+
+  socket.on('bblind', function() {
+    alert('big blind');
+  });
 
 
   jQuery("button:contains('Sair')").click(function(){

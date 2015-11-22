@@ -221,14 +221,14 @@ function tableController ($scope) {
   $scope.selectGameCards = function($scope) {
     while($scope.sortedCards.length < 5)
     {
-      var random = Math.floor(Math.random() * ($scope.allCards.length));
+      var random = Math.floor(Math.random() * $scope.allCards.length + 1);
       
       for (var j = 0; j < $scope.sortedCards.length; j++) {
           if($scope.sortedCards[j].id == random) $scope.contains = true;
       };
 
       if(!$scope.contains) {
-        $scope.sortedCards.push({ id: random, style: $scope.allCards[random].style });
+        $scope.sortedCards.push({ id: random, style: $scope.allCards[random-1].style });
         $scope.sortedIndexes.push(random);  
       }
 

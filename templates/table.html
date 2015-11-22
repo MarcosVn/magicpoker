@@ -7,8 +7,6 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/deck.css">
   <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-
-
   <link rel="stylesheet" type="text/css" href="stylesheets/table.css">
   <script src="js/jquery/jquery-1.7.2.min.js"></script>
   <script src="js/serverController.js"></script>
@@ -26,11 +24,8 @@
   <div style="color:white; font-size: 20px;
   text-shadow: rgba(0, 0, 0, 1) 0px 1px 2px;font-family:georgia;">Jogadores na mesa:<span id="players" style="margin-left: 20px; font-size: 20px;">0</span></div>
   <div class="main">
-    <div id="poker_clock" class="clearfix">
+    <div id="poker_clock" class="clearfix"> 
 
-
-
- <div id="sortedIndexes" ng-model="sortedIndexes">{{sortedIndexes}}</div>
  <div id="poker_play_pause">
     <span>Iniciar/Pausar</span>
     
@@ -66,13 +61,11 @@
     Seu navegador não suporta o som utilizado.
   </audio>
 </div>
-    <!-- <div class="player"><img src="/img/player.png"></img></div> -->
     <div class="table">
-      <div style="height: 1000px; margin: 200px" >
-        <!--<div class="card nine_diamonds"></div>-->
+          <div style="height: 500; margin: 200px">
               <div ng-repeat="card in sortedCards"
-              class="{{card.style}}" style="float: left"></div>
-   
+              class="{{card.style}}" style="float: left; margin-left: 5px;"></div>
+          </div>
       </div>
       
       <div class="board" style="margin: 125px 25% 0 70%; display: inline">

@@ -168,7 +168,7 @@ function handController ($scope) {
     },
     { 
       id: 42,
-      style: 'three_diamonds' 
+      style: 'card three_diamonds' 
     },
     { 
       id: 43,
@@ -219,8 +219,9 @@ function handController ($scope) {
   $scope.selectGameCards = function($scope) {
     while($scope.sortedCards.length < 2)
     {
-      var random = Math.floor(Math.random() * ($scope.allCards.length));
-      
+
+      var random = Math.floor(Math.random()+1 * ($scope.allCards.length));
+
       for (var j = 0; j < $scope.sortedCards.length; j++) {
           if($scope.sortedCards[j].id == random) $scope.contains = true;
       };
@@ -235,6 +236,7 @@ function handController ($scope) {
   }
 
   $scope.sortedCards = $scope.selectGameCards($scope);
+  console.log('adsdasdsadsa')
   console.log($scope.sortedCards);
 
 }

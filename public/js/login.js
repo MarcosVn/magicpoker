@@ -6,7 +6,6 @@ myApp.controller('postgreLoginCtrl', ['$scope' ,'$http', function($scope, $http,
     $scope.logged = false;
     $scope.user = null;
 
-
     $scope.auth = function() {
         for (var i = 0; i < $scope.dataset.length; i++) {
             if($scope.dataset[i].login == $scope.usuario && $scope.dataset[i].passwd == $scope.senha) {
@@ -43,6 +42,5 @@ myApp.controller('postgreLoginCtrl', ['$scope' ,'$http', function($scope, $http,
             alert('Usuário e/ou senha inválidos!');
         }
    }     
-
     $scope.getAllUsers();                                 
 }]); 

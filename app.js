@@ -31,12 +31,36 @@ io.on('connection', function(socket){
       socket.broadcast.emit('message', visitors);
    });
 
-
    socket.on('pre-flop', function(preFlopData){
-      console.info('entrou no pre-flop');
+      console.info('Inicio do pre-flop');
       console.info(preFlopData);
       //io.sockes.connected[preFlopData].emit('pflop', 'Início do fflooop caralho');
       io.sockets.connected[preFlopData.player].emit('pflop', preFlopData.sorted);
+   });
+
+   socket.on('fl', function(socket) {
+      console.info('Inicio do flop');
+      io.sockets.connected[socket].emit('flop', 'flop');
+   });
+
+   socket.on('tur', function(socket) {
+      console.info('Inicio do turn');
+      io.sockets.connected[socket].emit('turn', 'turn');
+   });
+
+   socket.on('riv', function(socket) {
+      console.info('Inicio do river');
+      io.sockets.connected[socket].emit('river', 'river');
+   });
+
+   socket.on('sblind', function(socket) {
+      console.info('definicao do small-blind');
+      io.sockets.connected[socket.data].emit('sblind', 'small-blind');
+   });
+
+   socket.on('bblind', function(socket) {
+      console.info('definicao do big-blind');
+      io.sockets.connected[socket.data].emit('bblind', 'big-blind');
    });
 
   socket.on('user', function(user) {
