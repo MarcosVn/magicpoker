@@ -1,96 +1,81 @@
 var sense = sense.init();
 var socket = io();
-var selectedCard = null;
-var currentValue;
-var userData = {};
-var x = "";
+var selectedCard = null,
+    currentValue = 0;
+var userData = {},
+    cards = [];
 
-jQuery(document).ready(function () {
-  var usuario = window.localStorage.getItem('usuario');
-  x = socket.io.engine.id;
-  userData = {playerId: x, nickname: usuario};
-  socket.emit('user', usuario);
+$(document).ready(function () {
+  var deck = $('.card').draggable();
+  var chip = $('.pokerchip').draggable();
 
-  var deck = jQuery('.card');
-  var raise = jQuery("#btn-raise");
-  var call =  jQuery("#btn-call");
-  var fold = jQuery("#btn-fold");
-  var dealer = jQuery('#dealer').hide();
-  var valueLabel = jQuery("span:contains('Valor da aposta:')");
-  var value = jQuery("input[type=text]").hide();
-  var submit = jQuery("input[type=submit]").hide();
-  var cards = jQuery('.card').draggable();
-  var chip = jQuery('.pokerchip').draggable();
-  var cards = new Array();
+  var raise = $('#btn-raise'),
+      call  = $('#btn-call'),
+      fold  = $('#btn-fold');
 
+  var submit = $('input[type=submit]').hide(),
+      aposta = $('#aposta').hide(),
+      blinds = $('#bblind').hide();
+
+  var apostar = $('#btnaposta'),
+      valorAposta = $('#blind');
+
+  var sair = $('#leave');
+  var user = window.localStorage.getItem('usuario');
+
+  ncards = {one: fcards[0], two: fcards[1]};
+  socket.emit('user', {nickname: user, deck: ncards});
   cards.push(deck[0].outerHTML, deck[1].outerHTML);
 
-  deck.each(function(i, element) {
-    jQuery(element)
-      .click(function(){
-        selectedCard = deck[i];
-        alert('Carta selecionada!');
-      });
-  });
 
-  sense.flick(function(data) {
-    socket.emit('card', cards);  
-  });
+
 
   socket.on('update-blinds', function(blinds) {
       currentValue = blinds;
   });
 
   socket.on('pflop', function(preFlopData){
-    alert('Pré-flop');
-    dealer.show();
-  })
-
-  socket.on('flop', function() {
-    alert('flop');
-  });
-
-
-  socket.on('turn', function() {
-    alert('turn');
-  });
-
-  socket.on('river', function() {
-    alert('river');
+      alert('Pré-flop');
   });
 
   socket.on('sblind', function() {
-    alert('small blind');
+    alert('Você é o small blind, faça sua aposta!');
+    blinds.show();
+    blinds.focus();
   });
 
   socket.on('bblind', function() {
-    alert('big blind');
+    alert('Você é o big blind, faça sua aposta!');
+    blinds.show();
+    blinds.focus();
   });
 
-
-  jQuery("button:contains('Sair')").click(function(){
-    jQuery('.card').hide();
-    jQuery('.chip').hide();
-    raise.hide();
-    call.hide();
-    fold.hide();
-    jQuery("span:contains('Aposta')").hide();  
-
+  apostar.click(function() {
+    socket.emit('update', valorAposta.val());
   });
 
-  call.click(function () {
-    console.log('call');
-    socket.emit('update', 100);
+  sense.flick(function(data) {
+    socket.emit('card', {nickname : user,
+                  cardList: cards});  
   });
 
-  fold.click(function () {
-    alert('Fold clicado');
-    foldf = true;
+  fold.click(function() {
+    alert('Faça o gesto de lançar as cartas sobre a mesa!');
+  });
+
+  call.click(function() {
+    socket.emit('update', currentValue);
   });
 
   submit.click(function() {
-    var x = $('#aposta').val();
-    socket.emit('raise', x);
-    alert('Fez o raise');
+    socket.emit('raise', aposta.val());
+  });
+
+  sair.click(function(){
+    deck.hide();
+    pokerchip.hide();
+    raise.hide();
+    call.hide();
+    fold.hide(); 
   });
 });

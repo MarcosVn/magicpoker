@@ -38,21 +38,6 @@ io.on('connection', function(socket){
       io.sockets.connected[preFlopData.player].emit('pflop', preFlopData.sorted);
    });
 
-   socket.on('fl', function(socket) {
-      console.info('Inicio do flop');
-      io.sockets.connected[socket].emit('flop', 'flop');
-   });
-
-   socket.on('tur', function(socket) {
-      console.info('Inicio do turn');
-      io.sockets.connected[socket].emit('turn', 'turn');
-   });
-
-   socket.on('riv', function(socket) {
-      console.info('Inicio do river');
-      io.sockets.connected[socket].emit('river', 'river');
-   });
-
    socket.on('sblind', function(socket) {
       console.info('definicao do small-blind');
       io.sockets.connected[socket.data].emit('sblind', 'small-blind');
@@ -65,13 +50,13 @@ io.on('connection', function(socket){
 
   socket.on('user', function(user) {
     //io.emit('user-logged', socket.id);
-    var userData = {id: socket.id, nickname: user};
+    var userData = {id: socket.id, data: user};
     io.emit('user-logged', userData);
   });
 
   /* Definição do listener para envio da carta client - server */
-  socket.on('card', function(card){
-    io.emit('card-broadcast', card);
+  socket.on('card', function(cardData){
+    io.emit('card-broadcast', cardData);
   });
 
   /* Definição do listener para update dos valores de aposta server - client */

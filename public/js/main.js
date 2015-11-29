@@ -1,5 +1,4 @@
-var myApp = angular.module('myApp', ['cardApp']);
-var index = 1;
+var myApp = angular.module('myApp', []);
 myApp.service('clientService', function () {
   var chips = [ 
     {
@@ -38,22 +37,11 @@ myApp.service('clientService', function () {
   this.getChips = function() {
     return chips;
   };
-
-  this.aggregateVals = function() {
-    var all = 0;
-    for (var i = 0; i < chips.length; i++) {
-      all += chips[i].val;
-    }
-    return all;
-  }
 });
 
 myApp.controller('chipsController', function chipsController($scope, clientService) {
   $scope.chips = clientService.getChips();
 
-  $scope.all = function () {
-    return clientService.aggregateVals();
-  };
 
   $scope.entrar = clientService.getEnter();
   $scope.btnToolbar = clientService.getBtnToolbar();

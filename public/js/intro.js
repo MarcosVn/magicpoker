@@ -8,7 +8,6 @@ function introController ($scope) {
     { 
       option: 'Campeonato',
       href: '/campeonato',
-      //clas: 'glyphicon glyphicon-glass'
       clas: 'glyphicon glyphicon-gift'
     }, 
     { 
@@ -16,10 +15,6 @@ function introController ($scope) {
       href: '/sala',
       clas: 'glyphicon glyphicon-lock'
     }, 
-    /*{ option: 'Selecione o cassino',
-      href: '/cassino',
-      clas: 'glyphicon glyphicon-globe'
-    },*/ 
     { option: 'Seu perfil',
       href: '/perfil',
       clas: 'glyphicon glyphicon-user'
