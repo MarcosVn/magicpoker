@@ -36,15 +36,13 @@ function getCombinations(k,n) {
     if (comb.length === 0) {for (i = 0; i < k; ++i) {comb[i] = i;} return true;}
     i = k - 1; ++comb[i];
     while ((i > 0) && (comb[i] >= n - k + 1 + i)) { --i; ++comb[i];}
-if (comb[0] > n - k) {return false;} // No more combinations can be generated
-for (i = i + 1; i < k; ++i) {comb[i] = comb[i-1] + 1;}
-  return true;
+    if (comb[0] > n - k) {return false;}
+    for (i = i + 1; i < k; ++i) {comb[i] = comb[i-1] + 1;}
+    return true;
+  }
+  while (next_comb(comb, k, n)) { result.push(comb.slice());}
+  return result;
 }
-while (next_comb(comb, k, n)) { result.push(comb.slice());}
-return result;
-}
-
-
 
 function getPokerScore(cs) {
   var a = cs.slice(), d={}, i;
@@ -52,7 +50,6 @@ function getPokerScore(cs) {
     a.sort(function(a,b){return (d[a] < d[b]) ? +1 : (d[a] > d[b]) ? -1 : (b - a);});
   return a[0]<<16|a[1]<<12|a[2]<<8|a[3]<<4|a[4];
 }    
-
 
 function rankHand(cards, suits) {
   var index = 10, winCardIndexes, i;
@@ -81,7 +78,6 @@ function rankHand(cards, suits) {
               winIndex = index; 
               wci = c[i].slice();
             } else if (handRanks[index] == maxRank) {
-              //If by chance we have a tie, find the best one
               var score1 = getPokerScore(cs);
               var score2 = getPokerScore([cards[wci[0]],cards[wci[1]],cards[wci[2]],
               cards[wci[3]],cards[wci[4]]]);
@@ -139,7 +135,12 @@ function swapTurn() {
     calculateWinner();
 }
 
+function updateClientsBet(newValue) {
+  socket.emit('update-client', newValue);
+}
+
 function updateTableBlinds(newValue) {
+  updateClientsBet(newValue);
   var valueDom = document.getElementById('value');
   value = parseInt(valueDom.innerHTML) + parseInt(newValue);
   valueDom.innerHTML = value;
@@ -150,6 +151,8 @@ function updateTableBlinds(newValue) {
     turn++;
   }
 }
+
+
 
 $(document).ready(function () {   
   var deck = $('.card').hide();

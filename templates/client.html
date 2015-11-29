@@ -28,14 +28,13 @@
     <div class="container-fluid" ng-controller="handController">
       <header>
         <button id="leave" class="log" ng-click="entrar = false" ng-model="checked"
-          style="color:white; font-weight: bold; float: left;"> 
+          style="color:white; font-weight: bold; float: left; margin: 10px"> 
           <i class="glyphicon glyphicon-log-out"></i>
           &nbsp; <a href="/"> Sair </a>
          </button>
 
-         <div style="color: white; float: right; margin: 10px; padding: 10px">Chat&nbsp;&nbsp;<i class="glyphicon glyphicon-comment"></i></div>
-         <div style="color: white; float: right; margin: 10px; padding: 10px">Apostar&nbsp;&nbsp;<i class="glyphicon glyphicon-record"></i></div>
-         <div style="color: white; float: right; margin: 5px; padding: 10px; margin-top: 1px; magin-right: 50px;">Tempo para jogar: --&nbsp;&nbsp;<i class="glyphicon glyphicon-time"></i></div>
+         <div id="gravar" style="color: white; float: right; margin: 20px; padding: 10px">Apostar&nbsp;&nbsp;<i class="glyphicon glyphicon-record"></i></div>
+         <div style="color: white; float: right; margin-right: -76px; margin-top: 70px;">00s&nbsp;<i class="glyphicon glyphicon-time"></i></div>
 
 
         <div id="bblind"><input id="blind" type="number" style="margin: 20px"/><button id="btnaposta">Apostar</button>
@@ -49,9 +48,9 @@
               class="{{card.style}}" style="float: left"></div>
   <footer>
     <div class="row">
-      <div id="btn-fold" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Fold</button> </div>
-      <div id="btn-call" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Call</button> </div>
-      <div id="btn-raise" class="col-xs-4 col-md-4" ng-show="btnToolbar" ng-click="btnToolbar = false"> <button class="btngrp">Raise</button> </div>
+      <div id="btn-fold" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Correr</button> </div>
+      <div id="btn-call" class="col-xs-4 col-md-4" ng-show="btnToolbar"> <button class="btngrp">Pagar</button> </div>
+      <div id="btn-raise" class="col-xs-4 col-md-4" ng-show="btnToolbar" ng-click="btnToolbar = false"> <button class="btngrp">Aumentar</button> </div>
       <input id="aposta" class="col-xs-8" ng-show="!btnToolbar" type="number" placeholder="Valor da aposta"></input>
       <input class="col-xs-4" ng-show="!btnToolbar" type="submit" ng-click="btnToolbar = true"> </input>
     </div>

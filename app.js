@@ -31,10 +31,12 @@ io.on('connection', function(socket){
       socket.broadcast.emit('message', visitors);
    });
 
+   socket.on('update-client', function(newValue)) {
+      socket.emit()
+
+   }
+
    socket.on('pre-flop', function(preFlopData){
-      console.info('Inicio do pre-flop');
-      console.info(preFlopData);
-      //io.sockes.connected[preFlopData].emit('pflop', 'Início do fflooop caralho');
       io.sockets.connected[preFlopData.player].emit('pflop', preFlopData.sorted);
    });
 
@@ -49,7 +51,6 @@ io.on('connection', function(socket){
    });
 
   socket.on('user', function(user) {
-    //io.emit('user-logged', socket.id);
     var userData = {id: socket.id, data: user};
     io.emit('user-logged', userData);
   });
@@ -75,7 +76,6 @@ server.listen(8000, function(){
 });
 
 
-
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -85,7 +85,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-/// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
